@@ -1,0 +1,16 @@
+[package]
+name = "native_audio_engine"
+version = "0.1.0"
+edition = "2024"
+
+
+
+[lib]
+name = "audio_engine"
+crate-type = ["cdylib"] # זה הקסם שייצר לנו את ה-.so
+
+[dependencies]
+gstreamer = "0.21"
+glib = "0.18"
+mpris-server = "0.7"
+zbus = "3.14" # התשתית ל-D-Bus בלינוקס

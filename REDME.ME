@@ -1,0 +1,46 @@
+# 🎵 Central Player Pro
+
+![Version](https://img.shields.io/badge/Version-2.5_Stable-orange.svg)
+![Platform](https://img.shields.io/badge/Platform-Linux-blue.svg)
+![Flutter](https://img.shields.io/badge/Frontend-Flutter-02569B?logo=flutter)
+![Rust](https://img.shields.io/badge/Backend-Rust-black?logo=rust)
+
+**Central Player Pro** is a high-performance, dark-themed, and feature-rich music player built specifically for Linux.
+It combines a lightning-fast native audio engine written in **Rust** (powered by GStreamer) with a beautiful, fully dynamic **Flutter** user interface.
+
+![Central Player Pro Screenshot](https://via.placeholder.com/800x450.png?text=Put+Your+Awesome+Screenshot+Here)
+
+---
+
+## ✨ Key Features
+
+* **🚀 Native Rust Audio Engine:** Bypasses Dart's single-thread limitations by handling all media playback, FFI, and decoding natively using Rust and GStreamer 1.28.
+* **🎚️ 10-Band Equalizer:** Professional-grade EQ with real-time adjustments and built-in presets (Flat, Rock, Jazz, Classical, Pop, Bass Boost).
+* **🌊 Real-Time Spectrum Analyzer:** Live FFT visualization mapping exact audio frequencies directly from the GStreamer pipeline to the UI at 60FPS.
+* **🎨 Dynamic Theming Engine:** Change the entire app's accent color on the fly without restarting.
+* **📁 Smart Library Management:** Recursive folder scanning capable of loading thousands of FLAC/MP3 files in milliseconds.
+* **💾 Instant Playlists:** Save and load your massive audio library instantly using optimized JSON serialization.
+* **⚡ UHD/4K Optimized UI:** Crisp, high-fidelity custom typography and layout designed for modern displays.
+
+---
+
+## 🏗️ Architecture
+
+The project is split into two main components to maximize performance and UI fluidity:
+1.  **Frontend (Flutter/Dart):** Handles the UI, state management, theming, and user interactions.
+2.  **Backend (Rust):** The `audio_engine.so` library handles GStreamer pipelines, D-Bus/MPRIS integrations, and heavy audio computations (like FFT for the spectrum).
+
+---
+
+## 🛠️ Build & Run Instructions
+
+### Prerequisites
+* Flutter SDK (Linux desktop support enabled)
+* Rust (`cargo` and `rustc`)
+* GStreamer development packages (e.g., `gstreamer1.0-plugins-good`, `gstreamer1.0-plugins-bad`, `libgstreamer1.0-dev`)
+
+### 1. Build the Rust Audio Engine
+Navigate to the native engine directory and build the shared library in release mode:
+```bash
+cd native_audio_engine
+cargo build --release
